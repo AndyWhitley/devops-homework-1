@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: S3 Bucket for devops practice
+Parameters:
+  DevopsTrainingS3BucketName:
+    Type: String
+Conditions:
+  PreferredRegion: !Equals [Ref: 'AWS::Region', us-east-1]
+Resources:
+  DevopsTrainingS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName:
+        !If
+          - PreferredRegion
+          - !Join ['-', [!Ref 'AWS::Region', !Ref DevopsTrainingS3BucketName]]
+          - !Join ['-', [!Ref 'AWS::AccountId', !Ref DevopsTrainingS3BucketName]]
+

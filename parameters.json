@@ -1,0 +1,6 @@
+[
+  {
+    "ParameterKey": "DevopsTrainingS3BucketName",
+    "ParameterValue": "andy-devops-training-bucket"
+  }
+]
